@@ -1,0 +1,134 @@
+<!--Just Improve it and stick to the fedma and consult me
+if want to change something-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuakeAid</title>
+    <link rel="stylesheet" href="./volunteerwithus.css">
+</head>
+
+    <!-- ===== Header Section ===== -->
+     <!--- In the header section, add navigation links for Home, Request Help, Contact, Donate, Volunteer, Feedback, and Login/Sign Up button.--->
+     <header>
+        <div class="logo">QuakeAid</div>
+        <nav>
+            <a href="./index.html">Home</a>
+            <a href="./whatwedo.html">Request Help</a>
+            <a href="./donate.html">Donate</a>
+            <a href="./feedback.html">Feedback</a>
+           <button id="openLogin" class="btn_Login-SignUp">Login / Sign Up</button>
+            <span></span>
+        </nav>
+    </header>
+    <!-- ===== Login / Sign Up Modal ===== -->
+<div id="loginModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" id="closeLogin">&times;</span>
+        <h2>Login / Sign Up</h2>
+
+        <div class="tab-buttons">
+            <button id="loginTab" class="active">Login</button>
+            <button id="signupTab">Sign Up</button>
+        </div>
+
+        <!-- Login Form -->
+        <form id="loginForm">
+            <label for="login-email">Email</label>
+            <input type="email" id="login-email" name="login-email" placeholder="your.email@example.com" required>
+
+            <label for="login-password">Password</label>
+            <input type="password" id="login-password" name="login-password" placeholder="Enter password" required>
+
+            <button type="submit">Login</button>
+        </form>
+
+        <!-- Sign Up Form -->
+        <form id="signupForm" style="display: none;">
+            <label for="signup-name">Full Name</label>
+            <input type="text" id="signup-name" name="signup-name" placeholder="Your full name" required>
+
+            <label for="signup-email">Email</label>
+            <input type="email" id="signup-email" name="signup-email" placeholder="your.email@example.com" required>
+
+            <label for="signup-password">Password</label>
+            <input type="password" id="signup-password" name="signup-password" placeholder="Create password" required>
+
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+</div>
+
+<!-- ===== JS for Modal ===== -->
+<script>
+    const loginModal = document.getElementById("loginModal");
+    const openLogin = document.getElementById("openLogin");
+    const closeLogin = document.getElementById("closeLogin");
+    const loginTab = document.getElementById("loginTab");
+    const signupTab = document.getElementById("signupTab");
+    const loginForm = document.getElementById("loginForm");
+    const signupForm = document.getElementById("signupForm");
+
+    // Open modal
+    openLogin.onclick = () => loginModal.style.display = "block";
+
+    // Close modal
+    closeLogin.onclick = () => loginModal.style.display = "none";
+
+    // Close when clicking outside
+    window.onclick = (event) => {
+        if (event.target === loginModal) loginModal.style.display = "none";
+    };
+
+    // Tab switching
+    loginTab.onclick = () => {
+        loginForm.style.display = "block";
+        signupForm.style.display = "none";
+        loginTab.classList.add("active");
+        signupTab.classList.remove("active");
+    };
+
+    signupTab.onclick = () => {
+        loginForm.style.display = "none";
+        signupForm.style.display = "block";
+        signupTab.classList.add("active");
+        loginTab.classList.remove("active");
+    };
+</script>
+    <body>
+        <section id="volunteer">
+  <div class="container">
+    <h2>Volunteer With Us</h2>
+    <p>Join our team to help provide relief and support to earthquake-affected communities. Your time and skills can make a real difference.</p>
+
+    <form action="#" method="POST">
+      <!-- Name -->
+      <label for="volunteer-name">Full Name</label>
+      <input type="text" id="volunteer-name" name="volunteer-name" placeholder="Your full name" required>
+
+      <!-- Email -->
+      <label for="volunteer-email">Email Address</label>
+      <input type="email" id="volunteer-email" name="volunteer-email" placeholder="your.email@example.com" required>
+
+      <!-- Phone -->
+      <label for="volunteer-phone">Phone Number</label>
+      <input type="tel" id="volunteer-phone" name="volunteer-phone" placeholder="e.g., +63 912 345 6789" required>
+
+      <!-- Skills / Areas of Help -->
+      <label for="volunteer-skills">Skills / Areas You Can Help</label>
+      <textarea id="volunteer-skills" name="volunteer-skills" rows="4" placeholder="E.g., medical aid, logistics, counseling..." required></textarea>
+
+      <!-- Availability -->
+      <label for="volunteer-availability">Availability</label>
+      <input type="text" id="volunteer-availability" name="volunteer-availability" placeholder="Days and hours you can volunteer" required>
+
+      <!-- Submit Button -->
+      <button type="submit">Sign Up to Volunteer</button>
+    </form>
+  </div>
+</section>
+
+
+    </body>
+    </html>

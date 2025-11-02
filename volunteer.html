@@ -1,0 +1,163 @@
+<!--Just Improve it and stick to the fedma and consult me
+if want to change something-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Works - QuakeAid</title>
+    <link rel="stylesheet" href="volunteer.css">
+</head>
+
+<body>
+    <!-- ===== Header Section ===== -->
+    <header>
+        <div class="logo">QuakeAid</div>
+        <nav>
+            <a href="./index.html">Home</a>
+            <a href="./whatwedo.html">What We Do</a>
+            <a href="./donate.html">Donations</a>
+            <a href="./feedback.html">Feedback From the People </a>
+            <button id="openLogin" class="btn_Login-SignUp">Login / Sign Up</button>
+            <span></span>
+        </nav>
+    </header>
+    <!-- ===== Login / Sign Up Modal ===== -->
+<div id="loginModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" id="closeLogin">&times;</span>
+        <h2>Login / Sign Up</h2>
+
+        <div class="tab-buttons">
+            <button id="loginTab" class="active">Login</button>
+            <button id="signupTab">Sign Up</button>
+        </div>
+
+        <!-- Login Form -->
+        <form id="loginForm">
+            <label for="login-email">Email</label>
+            <input type="email" id="login-email" name="login-email" placeholder="your.email@example.com" required>
+
+            <label for="login-password">Password</label>
+            <input type="password" id="login-password" name="login-password" placeholder="Enter password" required>
+
+            <button type="submit">Login</button>
+        </form>
+
+        <!-- Sign Up Form -->
+        <form id="signupForm" style="display: none;">
+            <label for="signup-name">Full Name</label>
+            <input type="text" id="signup-name" name="signup-name" placeholder="Your full name" required>
+
+            <label for="signup-email">Email</label>
+            <input type="email" id="signup-email" name="signup-email" placeholder="your.email@example.com" required>
+
+            <label for="signup-password">Password</label>
+            <input type="password" id="signup-password" name="signup-password" placeholder="Create password" required>
+
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+</div>
+
+<!-- ===== JS for Modal ===== -->
+<script>
+    const loginModal = document.getElementById("loginModal");
+    const openLogin = document.getElementById("openLogin");
+    const closeLogin = document.getElementById("closeLogin");
+    const loginTab = document.getElementById("loginTab");
+    const signupTab = document.getElementById("signupTab");
+    const loginForm = document.getElementById("loginForm");
+    const signupForm = document.getElementById("signupForm");
+
+    // Open modal
+    openLogin.onclick = () => loginModal.style.display = "block";
+
+    // Close modal
+    closeLogin.onclick = () => loginModal.style.display = "none";
+
+    // Close when clicking outside
+    window.onclick = (event) => {
+        if (event.target === loginModal) loginModal.style.display = "none";
+    };
+
+    // Tab switching
+    loginTab.onclick = () => {
+        loginForm.style.display = "block";
+        signupForm.style.display = "none";
+        loginTab.classList.add("active");
+        signupTab.classList.remove("active");
+    };
+
+    signupTab.onclick = () => {
+        loginForm.style.display = "none";
+        signupForm.style.display = "block";
+        signupTab.classList.add("active");
+        loginTab.classList.remove("active");
+    };
+</script>
+
+    <!-- ===== Volunteer Works Section ===== -->
+    <section id="volunteer">
+        <div class="container">
+            <h2>Volunteer Works & Proof</h2>
+            <p>
+                Our volunteers are the heart of <strong>QuakeAid</strong>.  
+                They dedicate their time and energy to support communities affected by earthquakes.  
+                Below are some of the remarkable efforts and real proof of their contributions.
+            </p>
+
+            <div class="volunteer-gallery">
+
+                <!-- 1. Food Distribution -->
+                <div class="volunteer-card">
+                    <!-- 🖼️ PLACE IMAGE HERE -->
+                    <img src="images/vol_food.jpg" alt="Volunteers distributing food packs">
+                    <label>Food & Water Distribution</label>
+                    <p>Our teams distributed thousands of food and water packs to families in evacuation centers.</p>
+                </div>
+
+                <!-- 2. Medical Missions -->
+                <div class="volunteer-card">
+                    <!-- 🖼️ PLACE IMAGE HERE -->
+                    <img src="images/vol_medical.jpg" alt="Medical volunteers giving first aid">
+                    <label>Medical Assistance</label>
+                    <p>Volunteer doctors and nurses provided free medical checkups and first aid to survivors.</p>
+                </div>
+
+                <!-- 3. Shelter Building -->
+                <div class="volunteer-card">
+                    <!-- 🖼️ PLACE IMAGE HERE -->
+                    <img src="images/vol_shelter.jpg" alt="Volunteers setting up temporary shelters">
+                    <label>Shelter Construction</label>
+                    <p>Teams helped set up temporary shelters to provide safe housing for displaced families.</p>
+                </div>
+
+                <!-- 4. Rescue Operations -->
+                <div class="volunteer-card">
+                    <!-- 🖼️ PLACE IMAGE HERE -->
+                    <img src="images/vol_rescue.jpg" alt="Volunteers in rescue operations">
+                    <label>Rescue Operations</label>
+                    <p>Trained volunteers worked alongside responders in rescue and evacuation operations.</p>
+                </div>
+
+                <!-- 5. Clean-up Drives -->
+                <div class="volunteer-card">
+                    <!-- 🖼️ PLACE IMAGE HERE -->
+                    <img src="images/vol_cleanup.jpg" alt="Community cleanup volunteers">
+                    <label>Community Clean-Up</label>
+                    <p>Groups organized clean-up drives to clear debris and restore local areas after disasters.</p>
+                </div>
+
+            </div>
+
+            <div class="cta">
+                <p>
+                    Want to be part of our next mission?  
+                    <a href="./volunteerwithus.html">Join our volunteer team</a> and help us continue rebuilding hope.
+                </p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!--Just Improve it and stick to the fedma and consult me
+if want to change something-->
+<!DOCTYPE html>
+<html lang="en">
+<head>  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback from the People We Help - QuakeAid</title>
+    <link rel="stylesheet" href="feedback.css">
+</head>
+<body>
+   <header>
+        <div class="logo">QuakeAid</div>
+        <nav>
+            <a href="./index.html">Home</a>
+            <a href="./whatwedo.html">What We Do</a>
+            <a href="./donate.html">Donations</a>
+            <a href="./volunteer.html">Volunteer Works & Proof</a>
+            <button id="openLogin" class="btn_Login-SignUp">Login / Sign Up</button>
+            <span></span>
+        </nav>
+    </header>
+    <!-- ===== Login / Sign Up Modal ===== -->
+<div id="loginModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" id="closeLogin">&times;</span>
+        <h2>Login / Sign Up</h2>
+
+        <div class="tab-buttons">
+            <button id="loginTab" class="active">Login</button>
+            <button id="signupTab">Sign Up</button>
+        </div>
+
+        <!-- Login Form -->
+        <form id="loginForm">
+            <label for="login-email">Email</label>
+            <input type="email" id="login-email" name="login-email" placeholder="your.email@example.com" required>
+
+            <label for="login-password">Password</label>
+            <input type="password" id="login-password" name="login-password" placeholder="Enter password" required>
+
+            <button type="submit">Login</button>
+        </form>
+
+        <!-- Sign Up Form -->
+        <form id="signupForm" style="display: none;">
+            <label for="signup-name">Full Name</label>
+            <input type="text" id="signup-name" name="signup-name" placeholder="Your full name" required>
+
+            <label for="signup-email">Email</label>
+            <input type="email" id="signup-email" name="signup-email" placeholder="your.email@example.com" required>
+
+            <label for="signup-password">Password</label>
+            <input type="password" id="signup-password" name="signup-password" placeholder="Create password" required>
+
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+</div>
+
+    <!-- ===== Feedback Section ===== -->
+    <section id="feedback">
+        <div class="container">
+            <h2>Feedback from the People We Help</h2>
+            <p>
+                These are heartfelt messages and stories from those whose lives were touched by 
+                <strong>QuakeAid’s</strong> relief efforts. Every smile and word of thanks inspires us to continue our mission.
+            </p>
+
+            <div class="feedback-gallery">
+
+                <!-- Feedback 1 -->
+                <div class="feedback-card">
+                    <img src="images/family1.jpg" alt="Family receiving relief packs">
+                    <div class="feedback-text">
+                        <h3>Maria Santos, Davao City</h3>
+                        <p>"QuakeAid reached us when we had nothing left. The food and clean water they provided saved our family. 
+                        Thank you for being our light in those dark days."</p>
+                    </div>
+                </div>
+
+                <!-- Feedback 2 -->
+                <div class="feedback-card">
+                    <img src="images/elderly.jpg" alt="Elderly woman receiving medical help">
+                    <div class="feedback-text">
+                        <h3>Lola Nena, Surigao del Norte</h3>
+                        <p>"The volunteers from QuakeAid gave us medicine and checked on our health after the quake. 
+                        They treated us like family. God bless your kind hearts!"</p>
+                    </div>
+                </div>
+
+                <!-- Feedback 3 -->
+                <div class="feedback-card">
+                    <img src="images/youth.jpg" alt="Young volunteers helping rebuild homes">
+                    <div class="feedback-text">
+                        <h3>Ramon Dela Cruz, Bohol</h3>
+                        <p>"Our home was damaged, but QuakeAid helped rebuild our shelter. 
+                        The youth volunteers were amazing — we’ll never forget their smiles and hard work."</p>
+                    </div>
+                </div>
+
+                <!-- Feedback 4 -->
+                <div class="feedback-card">
+                    <img src="images/mother_child.jpg" alt="Mother and child receiving support">
+                    <div class="feedback-text">
+                        <h3>Jessa and her son, Cebu</h3>
+                        <p>"We lost everything, but because of QuakeAid, we survived and started again. 
+                        The kindness of your volunteers gave us hope for the future."</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Feedback Form Section -->
+            <div class="cta">
+                <p id="loginPrompt">
+                    Want to share your own story?  
+                    <button id="feedbackLoginBtn" class="btn_Login-SignUp">Login / Sign Up to Submit Feedback</button>
+                </p>
+
+                <form id="feedbackForm" style="display: none;">
+                    <h3>Submit Your Feedback</h3>
+                    <label for="feedback-name">Full Name</label>
+                    <input type="text" id="feedback-name" name="feedback-name" placeholder="Your full name" required>
+
+                    <label for="feedback-message">Your Message</label>
+                    <textarea id="feedback-message" name="feedback-message" placeholder="Share your story..." required></textarea>
+
+                    <button type="submit">Send Feedback</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== JS for Modal and Feedback ===== -->
+<script>
+    let isLoggedIn = false;
+
+    const loginModal = document.getElementById("loginModal");
+    const openLogin = document.getElementById("openLogin");
+    const closeLogin = document.getElementById("closeLogin");
+    const loginTab = document.getElementById("loginTab");
+    const signupTab = document.getElementById("signupTab");
+    const loginForm = document.getElementById("loginForm");
+    const signupForm = document.getElementById("signupForm");
+
+    const feedbackLoginBtn = document.getElementById("feedbackLoginBtn");
+    const feedbackForm = document.getElementById("feedbackForm");
+    const loginPrompt = document.getElementById("loginPrompt");
+
+    // Open modal
+    openLogin.onclick = () => loginModal.style.display = "block";
+    feedbackLoginBtn.onclick = () => loginModal.style.display = "block";
+
+    // Close modal
+    closeLogin.onclick = () => loginModal.style.display = "none";
+
+    // Close when clicking outside
+    window.onclick = (event) => {
+        if (event.target === loginModal) loginModal.style.display = "none";
+    };
+
+    // Tab switching
+    loginTab.onclick = () => {
+        loginForm.style.display = "block";
+        signupForm.style.display = "none";
+        loginTab.classList.add("active");
+        signupTab.classList.remove("active");
+    };
+
+    signupTab.onclick = () => {
+        loginForm.style.display = "none";
+        signupForm.style.display = "block";
+        signupTab.classList.add("active");
+        loginTab.classList.remove("active");
+    };
+
+    // Login form submit
+    loginForm.onsubmit = (e) => {
+        e.preventDefault();
+        isLoggedIn = true;
+        loginModal.style.display = "none";
+        loginPrompt.style.display = "none";
+        feedbackForm.style.display = "block";
+    };
+
+    // Signup form submit
+    signupForm.onsubmit = (e) => {
+        e.preventDefault();
+        isLoggedIn = true;
+        loginModal.style.display = "none";
+        loginPrompt.style.display = "none";
+        feedbackForm.style.display = "block";
+    };
+
+    // Feedback form submit
+    feedbackForm.onsubmit = (e) => {
+        e.preventDefault();
+        const name = document.getElementById("feedback-name").value;
+        const message = document.getElementById("feedback-message").value;
+        alert(`Thank you, ${name}, for your feedback!`);
+        feedbackForm.reset();
+    };
+</script>
+</body>
+</html>
